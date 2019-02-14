@@ -4,7 +4,7 @@ import * as actions from "../actions";
 import { getRandomColor } from "../utils/index";
 
 const mapStateToProps = state => ({
-  counters: state.counters
+  counters: state.get("counters")
 });
 
 const mapDispatchToProps = dispatch => ({

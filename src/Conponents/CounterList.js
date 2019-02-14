@@ -1,6 +1,7 @@
 import React from "react";
 import Counter from "./Counter";
 import PropTypes from "prop-types";
+import { List } from "immutable";
 
 import "./CounterList.css";
 
@@ -9,27 +10,24 @@ const CounterList = ({ counters, onIncrement, onDecrement, onSetColor }) => {
     <Counter
       key={i}
       index={i}
-      {...counter}
+      {...counter.toJS()}
       onIncrement={onIncrement}
       onDecrement={onDecrement}
       onSetColor={onSetColor}
     />
   ));
+
   return <div className="CounterList">{counterList}</div>;
 };
 
-CounterList.PropTypes = {
-  counters: PropTypes.arrayOf(
-    PropTypes.shape({
-      color: PropTypes.string,
-      number: PropTypes.number
-    })
-  ),
+CounterList.propTypes = {
+  counters: PropTypes.instanceOf(List),
   onIncrement: PropTypes.func,
   onDecrement: PropTypes.func,
   onSetColor: PropTypes.func
 };
-CounterList.defaultProp = {
+
+CounterList.defaultProps = {
   counters: [],
   onIncrement: () => console.warn("onIncrement not defined"),
   onDecrement: () => console.warn("onDecrement not defined"),
