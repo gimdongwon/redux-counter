@@ -4,7 +4,7 @@ import Buttons from "./Button";
 
 import { connect } from "react-redux";
 import { getRandomColor } from "../utils";
-import * as actions from "../actions";
+import * as actions from "../modules";
 class App extends Component {
   render() {
     const { onCreate, onRemove } = this.props;
